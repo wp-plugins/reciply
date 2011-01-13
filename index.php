@@ -4,7 +4,7 @@ Plugin Name: Recip.ly Plugin
 Plugin URI: 
 Description: The recip.ly plugin allows you to easily add the recip.ly checkout process to your recipes.
 Author: The Recip.ly Integration team
-Version: 1.0.1
+Version: 1.0.4
 Author URI: http://integration.recip.ly
 */
 
