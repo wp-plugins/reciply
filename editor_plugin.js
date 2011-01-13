@@ -1,15 +1,12 @@
 function reciply() {
-	//alert(image_option);
-	//alert(color_option);
-	//alert(url_option);
-	url_option="'"+url_option+"'";
-	if ((image_option == "undefined") || (image_option == "")) {
+	//url_option="'"+url_option+"'";
+	if ((image_option == "undefined") || (image_option == "") || (image_option == "false")) {
+						image_option="http://www.recip.ly/static/images/widget-add.png";
 						if (color_option=="orange") image_option="http://www.recip.ly/static/images/widget-add-orange.png";
-						if (color_option=="red") image_option="http://www.recip.ly/static/images/widget-add.png";
+						if (color_option=="red") image_option="http://www.recip.ly/static/images/widget-add.png";				
 						}		
-    return '<script src="http://www.recip.ly/static/js/jquery-reciply.js" type="text/javascript"></script><div class="reciply-addtobasket-widget" onclick="location.href='+url_option+'";" style="cursor:pointer;"><img src='+image_option+'"></div>';
+    return '<script src="http://www.recip.ly/static/js/jquery-reciply.js" type="text/javascript"></script><div class="reciply-addtobasket-widget" onclick="location.href='+""+';" style="cursor:pointer;"><img src='+image_option+'"></div>';
 }
-
 
 (function() {
 
@@ -25,7 +22,7 @@ function reciply() {
                         reciply()
                         );
                 },
-                image: url + "/reciply.png"
+                image: url + "/images/reciply.png"
             });			
         },
 
@@ -35,7 +32,7 @@ function reciply() {
                 author : 'The Recip.ly Integration team',
                 authorurl : 'http://integration.recip.ly',
                 infourl : '',
-                version : "1.0.0.1"
+                version : "1.0.1"
             };
         }
     });
