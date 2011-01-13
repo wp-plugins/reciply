@@ -32,7 +32,7 @@ function reciply() {
                 author : 'The Recip.ly Integration team',
                 authorurl : 'http://integration.recip.ly',
                 infourl : '',
-                version : "1.0.2"
+                version : "1.0.4"
             };
         }
     });
