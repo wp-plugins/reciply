@@ -4,7 +4,7 @@ Plugin Name: Recip.ly Plugin
 Plugin URI: 
 Description: The recip.ly plugin allows you to easily add the recip.ly checkout process to your recipes.
 Author: The Recip.ly Integration team
-Version: 1.0.2
+Version: 1.0.1
 Author URI: http://integration.recip.ly
 */
 
@@ -53,6 +53,19 @@ function register_mysettings() {
 function reciply_settings_page() {
 ?>
 <script type="text/javascript">
+//<![CDATA[
+onload=function stateColor(){
+var color_option= "<?php echo get_option('color'); ?>";
+if (color_option=="orange") {
+	document.getElementById("orange").checked = true;
+	document.getElementById("red").checked = false;
+	}
+if (color_option=="red") {
+	document.getElementById("red").checked = true;
+	document.getElementById("orange").checked = false;
+	}
+}
+//]]>
 function activer(i) {
 //var choice_option= <?php echo json_encode(get_option('choix')); ?>;
 //alert(i);
@@ -74,7 +87,7 @@ alert(v);
 <div class="wrap">
 <h2>Reciply Plugin</h2>
 
-<form name="optionform" method="post" enctype="multipart/form-data" action="options.php">
+<form name="optionform" method="post" action="options.php" onload="javascript:stateColor();">
     <?php settings_fields('reciply-settings-group'); ?>
     <table class="form-table">
         <tr valign="top">
