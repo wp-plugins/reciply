@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Reciply Button
+Plugin Name: Recip.ly Plugin
 Plugin URI: 
-Description: Reciply Button
-Author: Karim Ntic
-Version: 1.0.0
-Author URI: 
+Description: The recip.ly plugin allows you to easily add the recip.ly checkout process to your recipes.
+Author: The Recip.ly Integration team
+Version: 1.0.1
+Author URI: http://integration.recip.ly
 */
 
 function reciply_addbuttons() 

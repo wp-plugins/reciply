@@ -32,10 +32,10 @@ function reciply() {
         getInfo : function() {
             return {
                 longname : 'Reciply plugin',
-                author : 'Karim Ntic',
-                authorurl : '',
+                author : 'The Recip.ly Integration team',
+                authorurl : 'http://integration.recip.ly',
                 infourl : '',
-                version : "1.0"
+                version : "1.0.0.1"
             };
         }
     });
