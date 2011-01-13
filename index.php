@@ -4,7 +4,7 @@ Plugin Name: Recip.ly Plugin
 Plugin URI: 
 Description: The recip.ly plugin allows you to easily add the recip.ly checkout process to your recipes.
 Author: The Recip.ly Integration team
-Version: 1.0.5
+Version: 1.0.7
 Author URI: http://integration.recip.ly
 */
 
@@ -15,9 +15,14 @@ add_filter('mce_buttons', 'reciply_add_button', 0);
 add_filter( "the_content", "url_post" );
 }
 
-function url_function($result='') {
-        //$result = get_post('guid');
-        return $result;
+function url_post($content) {
+$permalink = get_permalink();
+
+$post_url = '
+			<div class="reciply-addtobasket-widget" href="'.$permalink.'">
+			'; 	
+
+return str_replace('<div class="reciply-addtobasket-widget">', $post_url, $content);
 }
 
 function reciply_add_button($buttons)
@@ -47,13 +52,11 @@ function reciply_create_menu() {
 	add_action( 'admin_init', 'register_mysettings' );
 }
 
-
 function register_mysettings() {
 	//register our settings
 	register_setting( 'reciply-settings-group', 'color' );
 	register_setting( 'reciply-settings-group', 'image' );
-	register_setting( 'reciply-settings-group', 'choix' );	
-	//register_setting( 'reciply-settings-group', 'url' );	
+	register_setting( 'reciply-settings-group', 'choix' );		
 }
 
 function reciply_settings_page() {
@@ -120,10 +123,6 @@ alert(v);
         <td><input type="file" name="image" disabled="true" onchange="javascript:setpath(this.value);" value="<?php echo get_option('image'); ?>" /></td>
         </tr>
         </tr>		
-        <!--<tr valign="top">
-        <th scope="row">URL of your Website</th>
-        <td><input type="text" name="url" value="<?php echo get_option('url'); ?>" /></td>
-        </tr>	-->	
     </table>    
     <p class="submit">
     <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
@@ -138,7 +137,6 @@ function myscript() {
 var image_option= <?php echo json_encode(get_option('image')); ?>;
 var color_option= <?php echo json_encode(get_option('color')); ?>;
 var choix_option= <?php echo json_encode(get_option('choix')); ?>;
-//var url_option= <?php echo json_encode(get_option('url')); ?>;
 </script>
 <?php
 }
