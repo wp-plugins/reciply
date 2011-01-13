@@ -1,28 +1,37 @@
-function purchase() {
-    return '<div class="reciply-addtobasket-widget" href="URL of your website"><img src="http://localhost/wordpress/wp-content/uploads/2011/01/widget-add.png" width="220" height="40"></div>';
+function reciply() {
+	//alert(image_option);
+	//alert(color_option);
+	//alert(url_option);
+	url_option="'"+url_option+"'";
+	if ((image_option == "undefined") || (image_option == "")) {
+						if (color_option=="orange") image_option="http://www.recip.ly/static/images/widget-add-orange.png";
+						if (color_option=="red") image_option="http://www.recip.ly/static/images/widget-add.png";
+						}		
+    return '<script src="http://www.recip.ly/static/js/jquery-reciply.js" type="text/javascript"></script><div class="reciply-addtobasket-widget" onclick="location.href='+url_option+'";" style="cursor:pointer;"><img src='+image_option+'"></div>';
 }
+
 
 (function() {
 
-    tinymce.create('tinymce.plugins.purchase', {
+    tinymce.create('tinymce.plugins.reciply', {
 
         init : function(ed, url){
-            ed.addButton('purchase', {
-                title : 'Insert Purchase Button',
+            ed.addButton('reciply', {
+                title : 'Insert Reciply Button',
                 onclick : function() {
                     ed.execCommand(
                         'mceInsertContent',
                         false,
-                        purchase()
+                        reciply()
                         );
                 },
-                image: url + "/purchase.png"
-            });
+                image: url + "/reciply.png"
+            });			
         },
 
         getInfo : function() {
             return {
-                longname : 'Purchase Ingredient plugin',
+                longname : 'Reciply plugin',
                 author : 'Karim Ntic',
                 authorurl : '',
                 infourl : '',
@@ -31,6 +40,6 @@ function purchase() {
         }
     });
 
-    tinymce.PluginManager.add('purchase', tinymce.plugins.purchase);
+    tinymce.PluginManager.add('reciply', tinymce.plugins.reciply);
     
 })();
