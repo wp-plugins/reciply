@@ -36,7 +36,7 @@ add_action('admin_menu', 'reciply_create_menu');
 function reciply_create_menu() {
 
 	//create new top-level menu
-	add_menu_page('Reciply Plugin Settings', 'Reciply Settings', 'administrator', __FILE__, 'reciply_settings_page',plugins_url('icon.png', __FILE__));
+	add_menu_page('Reciply Plugin Settings', 'Reciply Settings', 'administrator', __FILE__, 'reciply_settings_page',plugins_url('images/icon.png', __FILE__));
 
 	//call register settings function
 	add_action( 'admin_init', 'register_mysettings' );
@@ -47,7 +47,7 @@ function register_mysettings() {
 	//register our settings
 	register_setting( 'reciply-settings-group', 'color' );
 	register_setting( 'reciply-settings-group', 'image' );
-	register_setting( 'reciply-settings-group', 'url' );	
+	//register_setting( 'reciply-settings-group', 'url' );	
 }
 
 function reciply_settings_page() {
@@ -63,7 +63,7 @@ if (i==0) {
 	}
 if (i==1) { 
 	document.optionform.image.disabled=false;
-		document.getElementById("red").disabled = true;
+	document.getElementById("red").disabled = true;
 	document.getElementById("orange").disabled = true;
 	}
 }
@@ -95,10 +95,10 @@ alert(v);
         <td><input type="file" name="image" disabled="true" onchange="javascript:setpath(this.value);" value="<?php echo get_option('image'); ?>" /></td>
         </tr>
         </tr>		
-        <tr valign="top">
+        <!--<tr valign="top">
         <th scope="row">URL of your Website</th>
         <td><input type="text" name="url" value="<?php echo get_option('url'); ?>" /></td>
-        </tr>		
+        </tr>	-->	
     </table>    
     <p class="submit">
     <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
@@ -113,7 +113,7 @@ function myscript() {
 <script type="text/javascript">
 var image_option= <?php echo json_encode(get_option('image')); ?>;
 var color_option= <?php echo json_encode(get_option('color')); ?>;
-var url_option= <?php echo json_encode(get_option('url')); ?>;
+//var url_option= <?php echo json_encode(get_option('url')); ?>;
 </script>
 <?php
 }
